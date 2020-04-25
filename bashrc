@@ -1,3 +1,4 @@
+# Setup for Kali Linux running i3 Window Manager
 # Copy this file to /home/$USER/.bashrc
 # Note: All install commands assume the aptitute (apt-get) package manager is used
 
@@ -73,7 +74,7 @@ alias gs='git status'
 alias gst='git stash'
 
 #-------------------------------------------------------------------------------
-# 			 	                 SETUP COMMANDS
+#                             SETUP COMMANDS
 #-------------------------------------------------------------------------------
 # Note: Grab ssh keys, kube configs, and vpn configs from a secure location.
 
