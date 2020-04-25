@@ -149,7 +149,7 @@ alias setupcontainers="setupdocker && setupkubectl"
 # ------------------- SETUP WINDOW MANAGER ----------------------
 alias setupi3xinit='echo -e "exec i3; startx; urxvt; xset r rate 200 50" > ~/.xinitrc'
 
-# Paste this into /etc/i3/config using Shift+Insert on urxvt
+#####################    Paste this into /etc/i3/config using Shift+Insert on urxvt
 ## Universal functions
 #bindsym Mod1+Ctrl+L exec i3lock -c 000000
 #bindsym Mod1+Ctrl+Delete exec clear ; bleachbit --clean --preset ; clear ; shutdown now
@@ -209,9 +209,9 @@ alias setupi3xinit='echo -e "exec i3; startx; urxvt; xset r rate 200 50" > ~/.xi
 #}
 #EOF'"
 
-# Replace line "bindsym Mod1+return exec i3-sensible-terminal" with "bindsym Mod1+return exec urxvt"
+#####################    Replace line "bindsym Mod1+return exec i3-sensible-terminal" with "bindsym Mod1+return exec urxvt"
 
-# Paste this into /etc/i3status.conf using Shift+Insert on urxvt
+#####################    Paste this into /etc/i3status.conf using Shift+Insert on urxvt
 #volume master {
 #	format = "♪ %volume"
 #	format_muted = "♪ muted %volume"
@@ -254,4 +254,4 @@ URxvt*background: #000000
 URxvt*foreground: #ffffff
 EOF' && xrdb -merge /home/${USER}/.Xresources"
 
-alias setupi3="setupurxvt"
+alias setupi3="setupi3xinit && setupurxvt"
