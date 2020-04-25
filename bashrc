@@ -133,13 +133,9 @@ alias setupterminal="setuprepo && setuppackages && setupbashprofile && setupvimr
 # │   └── config
 # └── qa
 #     └── config
-alias setupdocker="\ sudo yum-config-manager \
---add-repo https://download.docker.com/linux/centos/docker-ce.repo ; \n\
-sudo yum install docker-ce docker-ce-cli containerd.io ; \n\
-sudo groupadd docker; sudo usermod -aG docker $USER; newgrp docker; sudo systemctl start docker"
+alias setupdocker="sudo groupadd docker; sudo usermod -aG docker $USER; newgrp docker; sudo systemctl start docker"
 
-alias setupkubectl="\
-kubectl create -f myingress.ing && \
+alias setupkubectl="kubectl create -f myingress.ing && \
 mv myconfig ~/.kube/config && \
 kubectl config set-context --current --namespace=$USER"
 
