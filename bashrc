@@ -97,7 +97,7 @@ alias setuprepo="echo -e 'deb http://http.kali.org/kali kali-rolling main non-fr
 
 alias setuppackages="sudo apt-get install -y \
 vim i3 i3status git feh xclip keepassxc bleachbit \
-golang xdotool tree htop rxvt-unicode"
+golang xdotool tree htop rxvt-unicode redshift"
 
 alias setupbashprofile="echo -e '\
 eval \$(ssh-agent) > /dev/null 2>&1 \n\
@@ -251,3 +251,28 @@ URxvt*foreground: #ffffff
 EOF' && xrdb -merge /home/${USER}/.Xresources"
 
 alias setupi3="setupi3xinit && setupurxvt"
+
+# Setup monitors
+# 1. Use 'cvt' to calculate the resolution mode (<x> <y> <Hz>)
+#  Note: Some machines may only support 30Hz, others 60Hz+
+# 	ex: cvt 2560 1440 30 
+# 2. Use the cvt output to add a new mode using xrandr
+#  xrandr --newmode "2560x1440_30.00"  146.25  2560 2680 2944 3328  1440 1443 1448 1468 -hsync +vsync
+# 3. Add the mode to your desired output (use 'xrandr' with no args to display output options)
+#  xrandr --addmode HDMI-1 2560x1440_30.00
+# 4. Change the mode of the output to the new mode
+#  xrandr --output HDMI-1 --mode 2560x1440_30.00
+
+# Setup redshift to change your screen to a peachy color at night
+# ~/.config/redshift.conf
+# [redshift]
+# temp-day=6500
+# temp-night=2500
+# gamma=0.8
+# adjustment-method=vidmode
+# location-provider=manual
+#
+# [manual]
+# (get this from a map)
+# lat=
+# lon=
