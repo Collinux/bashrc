@@ -104,21 +104,52 @@ eval \$(ssh-agent) > /dev/null 2>&1 \n\
 ssh-add ~/.ssh/my-ssh-key > /dev/null 2>&1'\
 > ~/.bash_profile"
 
-alias setupvimrc="echo -e \
-'execute pathogen#infect() \n\
-set nowrap number rnu tabstop=4 shiftwidth=4 lazyredraw \n\
-syntax on \n\
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929 \n\
-match OverLength /\%81v.\+/ \n\
-au BufWritePost *.go !gofmt -w % \
-imap jj <Esc> \
-' > ~/.vimrc" 
+#alias setupvimrc="echo -e \
+#'
+#execute pathogen#infect()
+
+#" Core
+#set rnu number nowrap tabstop=4 shiftwidth=4 expandtab "lazyredraw
+#colorscheme spacegray " Light-ish grey, less harsh contrast
+#set mouse=a 		  " Allow using mouse
+#syntax on 			  " Syntax highlighting
+#set backspace=indent,eol,start " Allow backspacing at the start of a line
+#set undofile " Maintain undo history between sessions
+#set undodir=~/.vim/undodir " May need to mkdir beforehand
+
+#" Quick escape mode without leaving home row. Note the 'i' in inoremap means
+#" it only pplies to insert mode
+#inoremap jj <c-c>`^
+#inoremap jk <c-c>`^
+
+#" Comment only in normal mode
+#" Use 'gcc' to toggle comment/uncomment
+#filetype plugin on
+#noremap cc <C-o>:call NERDCommenterComment(0,"toggle")<CR>
+#let g:NERDCreateDefaultMappings = 1
+#let mapleader="g"
+
+#" File manager: nerd-tree
+#filetype plugin indent on
+#map <C-n> :NERDTreeToggle<CR>
+
+#" Go programming: vim-go
+#" Show auto complete when you type dot or Ctrl+n (default)
+#au filetype go inoremap <buffer> . .<C-x><C-o>
+#"au BufWritePost *.go !gofmt -w %
+#let g:go_fmt_command = "goimports" " Auto run imports on each save
+#let g:go_auto_type_info = 1 " Automatically get signature/type info for object under cursor
+#' > ~/.vimrc" 
 
 alias setupvimpkg="\
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim && \
 git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go && \
-git clone https://github.com/tpope/vim-surround.git ~/.vim/bundle/vim-surround"
+git clone https://github.com/tpope/vim-surround.git ~/.vim/bundle/vim-surround && \
+git clone https://github.com/vim-airline/vim-airline.git ~/.vim/bundle/vim-airline && \
+git clone https://github.com/preservim/nerdcommenter.git ~/.vim/bundle/nerd-commenter && \
+git clone https://github.com/preservim/nerdtree.git ~/.vim/bundle/nerdtree && \
+git clone https://github.com/ackyshake/Spacegray.vim.git ~/.vim/bundle/spacegray.vim"
 
 alias setupgit="git config --global user.name myname && git config --global user.email myname@users.noreply.github.com"
 
