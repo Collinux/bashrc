@@ -134,22 +134,44 @@ ssh-add ~/.ssh/my-ssh-key > /dev/null 2>&1'\
 #map <C-n> :NERDTreeToggle<CR>
 
 #" Go programming: vim-go
-#" Show auto complete when you type dot or Ctrl+n (default)
+#" See :help vim-go (may need to run :helptags ALL)
+#" https://gist.github.com/krlvi/d22bdcb66566261ea8e8da36f796fa0a
+#" Show auto complete when you type dot or ctrl+n, ctrl+n selects next, ctrl+p selects previous, ctrl+w closes the window.
+#" Use gd or ctrl+] jumps to the definition of a function or object and ctrl+t to go back
+#" Use :GoCoverage to show red/green functions in a test file, :GoCoverageClear, :GoCoverageToggle
+#" Use :GoAlternate to switch between the file and its _test.go
+#" Use :GoCallers to see function usages
+#" shift+t shows you the method signature
+#" Use :'<,'>GoFreevars to extract a function or visual select then :GoFreevars
+#"       (Getting "guru cannot find module providing package")
+#" Use :GoRename to refactor
+#" Use [[ or ]] to skip to the next/prev function
+#"
+#" Close windowsplit
+#nnoremap <leader>x <C-w>c
+
+#"autocmd FileType go nmap <leader>r <Plug>(go-rename)
+#"autocmd FileType go nmap <leader>t <Plug>(go-test-func)
 #au filetype go inoremap <buffer> . .<C-x><C-o>
-#"au BufWritePost *.go !gofmt -w %
-#let g:go_fmt_command = "goimports" " Auto run imports on each save
+#"let g:go_guru_scope=[/Users/guarincx/proj/go/src/]
+#" let g:go_fmt_command = "goimports" " Auto run imports on each save
 #let g:go_auto_type_info = 1 " Automatically get signature/type info for object under cursor
+#"let g:go_auto_sameids = 1 " Automatically highlight the same variable in scope
+#au BufWritePost *.go !gofmt -w %
 #' > ~/.vimrc" 
 
 alias setupvimpkg="\
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+cd ~/.vim/bundle \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim && \
 git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go && \
 git clone https://github.com/tpope/vim-surround.git ~/.vim/bundle/vim-surround && \
 git clone https://github.com/vim-airline/vim-airline.git ~/.vim/bundle/vim-airline && \
 git clone https://github.com/preservim/nerdcommenter.git ~/.vim/bundle/nerd-commenter && \
 git clone https://github.com/preservim/nerdtree.git ~/.vim/bundle/nerdtree && \
-git clone https://github.com/ackyshake/Spacegray.vim.git ~/.vim/bundle/spacegray.vim"
+git clone https://github.com/ackyshake/Spacegray.vim.git ~/.vim/bundle/spacegray.vim \
+git clone https://github.com/vim-scripts/bash-support.vim ~/.vim/bundle/bash-support.vim \
+git clone https://github.com/valloric/youcompleteme ~/.vim/bundle/youcompleteme && git submodule update --init --recursive && python3 install.py --go-completer"
 
 alias setupgit="git config --global user.name myname && git config --global user.email myname@users.noreply.github.com"
 
